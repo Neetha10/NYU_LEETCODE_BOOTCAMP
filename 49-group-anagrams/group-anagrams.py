@@ -1,31 +1,29 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        char={}
-        output=[]
-        for i in range(len(strs)):
-            sort_string=''.join(sorted(strs[i]))
-            if sort_string in char:
-                char[sort_string].append(strs[i])
-            else:
-                char[sort_string]=[strs[i]]
-        return list(char.values())
-
-
-
-
-
-
-
-
-
-
-
-
+        counts_list=[]
+        groups=[]
+        for word in strs:
+            hashi={}
+            for char in word:
+                if char in hashi:
+                    hashi[char]+=1
+                else:
+                    hashi[char]=1
+            found=False
+            for i,prev_count in enumerate(counts_list):
+                if hashi==prev_count:
+                    groups[i].append(word)
+                    found=True
+                    break
+            if not found:
+                counts_list.append(hashi)
+                groups.append([word])
+        return groups
+            
 
         
-        
-        
-        
-        
-
+            
+            
+            
+            
         
