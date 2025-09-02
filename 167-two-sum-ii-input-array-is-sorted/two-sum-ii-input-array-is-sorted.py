@@ -1,12 +1,24 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        left=0
-        right=len(numbers)-1
-        while left<=right:
-            if numbers[left]+numbers[right]>target:
-                right-=1
-            elif numbers[left]+numbers[right]<target:
-                left+=1
-            else:
-                return left+1,right+1
+        n=len(numbers)
+        for i in range(n):
+            left=i+1
+            right=n-1
+            complement=target-numbers[i]
+            while left<=right:
+                mid=(left+right)//2
+                if numbers[mid]==complement:
+                    return [i+1,mid+1]
+                elif numbers[mid] >complement:
+                    right=mid-1
+                else:
+                    left=mid+1
+
+                
+                
+
+
+        
+
+
         
